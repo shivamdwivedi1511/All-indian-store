@@ -1,0 +1,22 @@
+.btn {
+	min-width: 72px;
+  height: 38px;
+  border-radius: 6px;
+	background-color: #47b3bb;
+	border-color: #47b3bb;
+	transition: 0.5s;
+	&:active {
+		background-color: #47b3bb !important;
+		border-color: #47b3bb !important; 	
+	}
+	&:hover {
+		background-color: #3fa5ad;
+		border-color: #3fa5ad;
+		transition: 0.5s;
+	}
+	&:focus {
+		background-color: #47b3bb !important;
+		border-color: #47b3bb !important;
+		box-shadow: none !important;
+	}
+}

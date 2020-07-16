@@ -1,7 +1,8 @@
 import React from "react";
-import "./App.css";
-import CourseForm from "./components/CourseForm";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.scss";
+import CourseForm from "./components/CourseForm";
+
 
 function App() {
   return (
