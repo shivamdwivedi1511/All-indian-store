@@ -2,15 +2,29 @@ import React from "react";
 import { Field, Form, Formik, ErrorMessage } from "formik";
 import { Jumbotron, Button, Input, Label } from "reactstrap";
 import * as Yup from "yup";
-import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
-import { FormGroup, FormText } from 'reactstrap';
+import { Breadcrumb, BreadcrumbItem } from "reactstrap";
+import { FormGroup, FormText } from "reactstrap";
+import RichTextEditor from "../RichTextEditor/RichTextEditor";
 
 const MyInput = ({ field, form, ...props }: any) => {
   return <Input {...field} {...props} />;
 };
 
-const MyTextArea = ({ field, form, ...props }: any) => {
-  return <textarea {...field} {...props} />;
+const MyTextEditor = ({ field, form, ...props }: any) => {
+  return (
+    <div>
+      <RichTextEditor {...field} {...props} />
+    </div>
+  );
+};
+const MyCheckBox = ({ field, form, ...props }: any) => {
+  return (
+    <FormGroup className="custom-checkbox">
+      <Label>
+        <Input type="checkbox" {...field} {...props} /> <span>Common Data</span>
+      </Label>
+    </FormGroup>
+  );
 };
 
 const SignupSchema = Yup.object().shape({
@@ -24,7 +38,9 @@ const MyForm = () => (
   <>
     <h1 className="main-heading">Add Question</h1>
     <Breadcrumb className="custom-breadcrumb">
-      <BreadcrumbItem><a href="#">Home</a></BreadcrumbItem>
+      <BreadcrumbItem>
+        <a href="#">Home</a>
+      </BreadcrumbItem>
       <BreadcrumbItem active>Add question</BreadcrumbItem>
     </Breadcrumb>
     <Formik
@@ -50,7 +66,9 @@ const MyForm = () => (
           <div className="row">
             <div className="col-sm-6">
               <FormGroup>
-                <Label>Subject <span className="star">*</span></Label>
+                <Label>
+                  Subject <span className="star">*</span>
+                </Label>
                 <Field as="select" name="subject" className="form-control">
                   <option value="English">English</option>
                   <option value="Maths">Maths</option>
@@ -58,60 +76,74 @@ const MyForm = () => (
                   <option value="Computer">Computer</option>
                   <option value="Arts">Arts</option>
                 </Field>
-                <span className="error-text"><ErrorMessage name="subject" /></span>
+                <span className="error-text">
+                  <ErrorMessage name="subject" />
+                </span>
               </FormGroup>
             </div>
             <div className="col-sm-6">
               <div className="form-group">
-                <Label>Difficulty <span className="star">*</span></Label>
+                <Label>
+                  Difficulty <span className="star">*</span>
+                </Label>
                 <Field as="select" name="difficulty" className="form-control">
                   <option value="easy">easy</option>
                   <option value="medium">medium</option>
                   <option value="hard">hard</option>
                 </Field>
-                <span className="error-text"><ErrorMessage name="difficulty" /></span>
+                <span className="error-text">
+                  <ErrorMessage name="difficulty" />
+                </span>
               </div>
             </div>
             <div className="col-sm-6">
               <div className="form-group">
-                <Label>Topic <span className="star">*</span></Label>
+                <Label>
+                  Topic <span className="star">*</span>
+                </Label>
                 <Field
                   name="topic"
                   placeholder="Enter the topic name"
                   component={MyInput}
                 />
-                <span className="error-text"><ErrorMessage name="topic" /></span>
+                <span className="error-text">
+                  <ErrorMessage name="topic" />
+                </span>
               </div>
             </div>
             <div className="col-sm-6">
               <div className="form-group">
-                <Label>Question type <span className="star">*</span></Label>
+                <Label>
+                  Question type <span className="star">*</span>
+                </Label>
                 <Field as="select" name="qstype" className="form-control">
                   <option value="mcq">mcq</option>
                   <option value="description">description</option>
                   <option value="blue">Blue</option>
                 </Field>
-                <span className="error-text"><ErrorMessage name="qstype" /></span>
+                <span className="error-text">
+                  <ErrorMessage name="qstype" />
+                </span>
               </div>
             </div>
           </div>
           <div role="group" aria-labelledby="checkbox-group">
-            <FormGroup className="custom-checkbox">
-              <Label>
-                <Input type="checkbox" />{' '}
-                <span>Common Data</span>
-              </Label>
-            </FormGroup>
+            <Field
+              type="checkbox"
+              name="toggle"
+              id="toggle"
+              component={MyCheckBox}
+            />
             {props.values.toggle && (
               <Field
                 name="common"
                 placeholder="common"
-                component={MyTextArea}
+                component={MyTextEditor}
               />
             )}
           </div>
           <div className="text-right">
-            <Button color="primary">Submit</Button>{' '}
+            <Button color="primary">Submit</Button>{" "}
           </div>
         </Form>
       )}
