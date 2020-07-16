@@ -95,9 +95,9 @@ a {
 //Custom Checkbox
 .custom-checkbox {
   position: relative; 
-  margin-bottom: 0 !important;
+  margin-bottom: 10px !important;
   label {
-    cursor: pointer;
+    cursor: pointer; 
   }
   input {
     display: none;

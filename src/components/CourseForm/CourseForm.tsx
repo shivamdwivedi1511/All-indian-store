@@ -12,7 +12,7 @@ const MyInput = ({ field, form, ...props }: any) => {
 
 const MyTextEditor = ({ field, form, ...props }: any) => {
   return (
-    <div>
+    <div className="custom-text-editor">
       <RichTextEditor {...field} {...props} />
     </div>
   );
